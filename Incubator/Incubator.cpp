@@ -62,7 +62,8 @@ bool pressed_keypad = false;
 
 bool system_fault = false;
 bool restart_system = false;
-uint16_t air_temp=0, skin_temp=0, humidity=0;
+uint16_t humidity=0;
+float air_temp = 0.0, skin_temp = 0.0;
 int last_key = 0;
 
 Timerr timerr;
@@ -101,7 +102,7 @@ int main(void)
 	timerr.setTimerNum(5);
 	timerr.setCompareInterrupt();
 	
-	Printf(1,"TA:%dC   TS:%dC",air_temp,skin_temp);
+	Printf(1,"TA:%fC   TS:%fC",air_temp,skin_temp);
 	Printf(2,"RH:%d%",humidity);
 	Printf(3,"00:00:00");
 
@@ -110,14 +111,15 @@ int main(void)
 		check();
 		
 		/*For Led */
-		int adc = adc_read(0);
+		int adc = adc_read(LM35_1);
+		air_temp = ((adc / 1024.0)) * 100;
 		int dutycycle = (adc/1024.0) * 100;
 		phototherapy.change_brightness(dutycycle);
 		
-		air_temp = adc_read(LM35_1);
-		skin_temp = adc_read(LM35_2);
+		//air_temp = adc_read(LM35_1);
+		int adc1 = adc_read(HUMIDITY);
+		skin_temp = ((adc1 / 1024.0)) * 100;
 		/*_delay_ms(20);
-		
 		
 		humidity = adc_read(HUMIDITY);
 		*/
@@ -171,9 +173,9 @@ void init_devices() {
 
 void display(){
 	lcd_gotoxy(3,0);
-	Printf(5,"%dC",air_temp);
-	lcd_gotoxy(11,0);
-	Printf(5,"%dC",skin_temp);
+	Printf(5,"%fC",air_temp);
+	lcd_gotoxy(13,0);
+	Printf(5,"%fC",skin_temp);
 	lcd_gotoxy(3,1);
 	Printf(5,"%d%",humidity);
 	if(hour == 0 && minute == 0 && second == 0) {
@@ -332,6 +334,7 @@ void check() {
 		
 		//lcd_clear();
 		Printf(4, "START INCUBATOR");
+		
 		if(true) {
 			controls.startFan();
 			controls.startHeater();

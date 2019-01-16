@@ -12,6 +12,9 @@
 #include <avr/io.h>
 #include <util/delay.h>
 #include "PWM.h"
+#include "Pins.h"
+#include "Header.h"
+
 
 
 

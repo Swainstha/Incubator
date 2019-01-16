@@ -95,6 +95,21 @@
 #define LM35_2 3
 #define HUMIDITY 2
 
+#define DDR(x) (*(&x - 1))      /* address of data direction register of port x */
+
+
+#define FAN_PORT PORTB
+#define FAN_PIN PINB7
+
+#define HEATER_PORT PORTB
+#define HEATER_PIN PINB4
+
+#define PHOTO_PORT PORTB
+#define PHOTO_PIN PINB6
+
+#define PHOTO_PWM_PORT PORTB
+#define PHOTO_PWM_PIN PINB5
+
 
 
 

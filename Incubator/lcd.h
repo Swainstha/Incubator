@@ -456,7 +456,7 @@ void Printf(unsigned char linenumber, char *fmt,... )
 		fval=va_arg( aptr, double ); 
 		{
 			int d,m;
-			m=10000*(fval=fval-(d=fval));
+			m=100*(fval=fval-(d=fval)); //changed to 2 digit decimal
 			if( m<0 )
 			m*=-1;
 			lcd_num( d, 10 );

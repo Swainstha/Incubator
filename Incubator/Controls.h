@@ -10,6 +10,9 @@
 #define CONTROLS_H_
 
 #include <avr/io.h>
+#include "Pins.h"
+#include "Header.h"
+
 class Controls {
 	public:
 	void initControls();
