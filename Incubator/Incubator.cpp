@@ -121,9 +121,10 @@ int main(void)
 		/*For Led */
 		int adc = adc_read(LM35_1);
 		air_temp = ((adc / 1024.0)) * 100;
-		int dutycycle = (adc/1024.0) * 100;
-		phototherapy.change_brightness(dutycycle);
-		
+		if(incubator_running || photo_start) {
+			int dutycycle = (adc/1024.0) * 100;
+			phototherapy.change_brightness(dutycycle);
+		}
 		//air_temp = adc_read(LM35_1);
 		int adc1 = adc_read(HUMIDITY);
 		skin_temp = ((adc1 / 1024.0)) * 100;
@@ -361,7 +362,7 @@ void check() {
 		//lcd_clear();
 		Printf(4, "START INCUBATOR");
 		
-		if(true) {  //is door closed
+		if(door_closed) {  //is door closed
 			controls.startFan();
 			controls.startHeater();
 			
@@ -372,6 +373,7 @@ void check() {
 			incubator_running = true;
 			timer_state = true;
 			phototherapy.start_phototherapy(50);
+			photo_start = true;
 			timer_set = false;
 			timerr.startCustomTimer(1000);
 			leds.led_do(TIMER_RUNNING_LED, ON);
@@ -395,6 +397,7 @@ void check() {
 		heatOn = true;
 		timerHeater.stopTimer();
 		
+		photo_start = false;
 		controls.stopFan();
 		controls.stopHeater();
 	}
@@ -404,6 +407,7 @@ void check() {
 		//lcd_clear();
 		Printf(4, "STOP INCUBATOR");
 		incubator_running = false;
+		photo_start = false;
 		phototherapy.stop_phototherapy();
 		timerr.stopTimer();
 		pressed_incubator_stop = true;
@@ -437,17 +441,25 @@ void check() {
 		//lcd_clear();
 		Printf(4, "RESET");
 		pressed_restart_system = true;
+		system_fault = true; //for testing purpose only
 		if(system_fault && door_closed) {
 			system_fault = false;
 			restart_system = true;
 			incubator_running = true;
 			timer_state = true;
 			phototherapy.start_phototherapy(50);
+			photo_start = true;
 			timer_set = false;
 			timerr.startCustomTimer(1000);
 			leds.led_do(TIMER_RUNNING_LED, ON);
 			leds.led_do(HEATER_ON_LED, ON);
 			leds.led_do(FAN_ON_LED, ON);
+			
+			controls.startFan();
+			controls.startHeater();
+			heaterCount = 60;
+			heatOn = true;
+			timerHeater.startCustomTimer(1000);
 		}
 	} else if(bit_is_clear(RESET_BUTTON_PORT, RESET_BUTTON_PIN)){
 		pressed_restart_system = false;
