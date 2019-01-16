@@ -31,7 +31,7 @@ void check();
 void update_time();
 
 volatile int second = 30;
-volatile int minute = 0;
+volatile int minute = 3;
 volatile int hour = 0;
 
 int time[6] = {0,0,0,0,0,0};
@@ -66,7 +66,12 @@ uint16_t humidity=0;
 float air_temp = 0.0, skin_temp = 0.0;
 int last_key = 0;
 
+volatile int heaterCount = 60;
+volatile bool heatOn = true;
+volatile bool heaterCountUpdate = false; 
+
 Timerr timerr;
+Timerr timerHeater;
 PhotoTherapy phototherapy;
 led leds;
 Controls controls;
@@ -102,6 +107,9 @@ int main(void)
 	timerr.setTimerNum(5);
 	timerr.setCompareInterrupt();
 	
+	timerHeater.setTimerNum(3);
+	timerHeater.setCompareInterrupt();
+	
 	Printf(1,"TA:%fC   TS:%fC",air_temp,skin_temp);
 	Printf(2,"RH:%d%",humidity);
 	Printf(3,"00:00:00");
@@ -126,6 +134,19 @@ int main(void)
 		
 		if(incubator_running) {
 			update_time();
+			if(heaterCountUpdate) {
+				heaterCountUpdate = false;
+				heaterCount--;
+				if(heaterCount == 0 && heatOn) {
+					heaterCount = 30;
+					heatOn = false;
+					controls.stopHeater();
+				} else if(heaterCount == 0 && !heatOn) {
+					heaterCount = 60;
+					heatOn = true;
+					controls.startHeater();
+				}
+			}
 		} 
 		display();
 		if(keypad_enable) {
@@ -238,6 +259,11 @@ ISR(TIMER5_COMPA_vect) {
 	second_lapsed = true;
 }
 
+ISR(TIMER3_COMPA_vect) {
+	TCNT3 = 0;
+	heaterCountUpdate = true;
+}
+
 void check() {
 	
 	if(air_temp > MAX) {
@@ -335,9 +361,14 @@ void check() {
 		//lcd_clear();
 		Printf(4, "START INCUBATOR");
 		
-		if(true) {
+		if(true) {  //is door closed
 			controls.startFan();
 			controls.startHeater();
+			
+			heaterCount = 60;
+			heatOn = true;
+			timerHeater.startCustomTimer(1000);
+			
 			incubator_running = true;
 			timer_state = true;
 			phototherapy.start_phototherapy(50);
@@ -359,6 +390,11 @@ void check() {
 		leds.led_do(TIMER_RUNNING_LED, OFF);
 		leds.led_do(HEATER_ON_LED, OFF);
 		leds.led_do(FAN_ON_LED, OFF);
+		
+		heaterCount = 60;
+		heatOn = true;
+		timerHeater.stopTimer();
+		
 		controls.stopFan();
 		controls.stopHeater();
 	}
@@ -376,6 +412,11 @@ void check() {
 		leds.led_do(FAN_ON_LED, OFF);
 		controls.stopFan();
 		controls.stopHeater();
+		
+		heaterCount = 60;
+		heatOn = true;
+		timerHeater.stopTimer();
+		
 		} else if(bit_is_set(STOP_INCUBATOR_BUTTON_PORT, STOP_INCUBATOR_BUTTON_PIN)) {
 		pressed_incubator_stop = false;
 	}

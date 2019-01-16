@@ -107,7 +107,7 @@ Discarded input sections
  .text._ZN6Timerr10startTimerEv
                 0x00000000       0x50 Timerr.o
  .text._ZN6Timerr10resetTimerEv
-                0x00000000        0xa Timerr.o
+                0x00000000       0x24 Timerr.o
  .text          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/../../../../avr/lib/avr6\libm.a(addsf3.o)
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/../../../../avr/lib/avr6\libm.a(addsf3.o)
  .text          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/../../../../avr/lib/avr6\libm.a(addsf3x.o)
@@ -362,7 +362,7 @@ LOAD c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x1a14
+.text           0x00000000     0x1b58
  *(.vectors)
  .vectors       0x00000000       0xe4 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/../../../../avr/lib/avr6/crtm2560.o
                 0x00000000                __vector_default
@@ -417,254 +417,256 @@ LOAD c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr
  *(.init8)
  *(.init8)
  *(.init9)
- .init9         0x00000140        0x6 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/../../../../avr/lib/avr6/crtm2560.o
+ .init9         0x00000140        0x8 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/../../../../avr/lib/avr6/crtm2560.o
  *(.init9)
  *(.text)
- .text          0x00000146        0x2 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/../../../../avr/lib/avr6/crtm2560.o
-                0x00000146                __vector_38
-                0x00000146                __vector_22
-                0x00000146                __vector_28
-                0x00000146                __vector_1
-                0x00000146                __vector_32
-                0x00000146                __vector_34
-                0x00000146                __vector_24
-                0x00000146                __vector_12
-                0x00000146                __vector_55
-                0x00000146                __vector_46
-                0x00000146                __bad_interrupt
-                0x00000146                __vector_6
-                0x00000146                __vector_31
-                0x00000146                __vector_35
-                0x00000146                __vector_39
-                0x00000146                __vector_3
-                0x00000146                __vector_23
-                0x00000146                __vector_30
-                0x00000146                __vector_45
-                0x00000146                __vector_25
-                0x00000146                __vector_11
-                0x00000146                __vector_54
-                0x00000146                __vector_13
-                0x00000146                __vector_17
-                0x00000146                __vector_19
-                0x00000146                __vector_56
-                0x00000146                __vector_7
-                0x00000146                __vector_49
-                0x00000146                __vector_41
-                0x00000146                __vector_43
-                0x00000146                __vector_27
-                0x00000146                __vector_5
-                0x00000146                __vector_33
-                0x00000146                __vector_52
-                0x00000146                __vector_37
-                0x00000146                __vector_4
-                0x00000146                __vector_44
-                0x00000146                __vector_51
-                0x00000146                __vector_9
-                0x00000146                __vector_2
-                0x00000146                __vector_21
-                0x00000146                __vector_15
-                0x00000146                __vector_36
-                0x00000146                __vector_29
-                0x00000146                __vector_40
-                0x00000146                __vector_8
-                0x00000146                __vector_26
-                0x00000146                __vector_48
-                0x00000146                __vector_14
-                0x00000146                __vector_53
-                0x00000146                __vector_10
-                0x00000146                __vector_50
-                0x00000146                __vector_16
-                0x00000146                __vector_18
-                0x00000146                __vector_20
-                0x00000146                __vector_42
-                0x00000148                . = ALIGN (0x2)
+ .text          0x00000148        0x2 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/../../../../avr/lib/avr6/crtm2560.o
+                0x00000148                __vector_38
+                0x00000148                __vector_22
+                0x00000148                __vector_28
+                0x00000148                __vector_1
+                0x00000148                __vector_34
+                0x00000148                __vector_24
+                0x00000148                __vector_12
+                0x00000148                __vector_55
+                0x00000148                __vector_46
+                0x00000148                __bad_interrupt
+                0x00000148                __vector_6
+                0x00000148                __vector_31
+                0x00000148                __vector_35
+                0x00000148                __vector_39
+                0x00000148                __vector_3
+                0x00000148                __vector_23
+                0x00000148                __vector_30
+                0x00000148                __vector_45
+                0x00000148                __vector_25
+                0x00000148                __vector_11
+                0x00000148                __vector_54
+                0x00000148                __vector_13
+                0x00000148                __vector_17
+                0x00000148                __vector_19
+                0x00000148                __vector_56
+                0x00000148                __vector_7
+                0x00000148                __vector_49
+                0x00000148                __vector_41
+                0x00000148                __vector_43
+                0x00000148                __vector_27
+                0x00000148                __vector_5
+                0x00000148                __vector_33
+                0x00000148                __vector_52
+                0x00000148                __vector_37
+                0x00000148                __vector_4
+                0x00000148                __vector_44
+                0x00000148                __vector_51
+                0x00000148                __vector_9
+                0x00000148                __vector_2
+                0x00000148                __vector_21
+                0x00000148                __vector_15
+                0x00000148                __vector_36
+                0x00000148                __vector_29
+                0x00000148                __vector_40
+                0x00000148                __vector_8
+                0x00000148                __vector_26
+                0x00000148                __vector_48
+                0x00000148                __vector_14
+                0x00000148                __vector_53
+                0x00000148                __vector_10
+                0x00000148                __vector_50
+                0x00000148                __vector_16
+                0x00000148                __vector_18
+                0x00000148                __vector_20
+                0x00000148                __vector_42
+                0x0000014a                . = ALIGN (0x2)
  *(.text.*)
  .text._ZN8Controls12initControlsEv
-                0x00000148       0x34 Controls.o
-                0x00000148                _ZN8Controls12initControlsEv
+                0x0000014a       0x34 Controls.o
+                0x0000014a                _ZN8Controls12initControlsEv
  .text._ZN8Controls8startFanEv
-                0x0000017c        0xa Controls.o
-                0x0000017c                _ZN8Controls8startFanEv
+                0x0000017e        0xa Controls.o
+                0x0000017e                _ZN8Controls8startFanEv
  .text._ZN8Controls11startHeaterEv
-                0x00000186        0x4 Controls.o
-                0x00000186                _ZN8Controls11startHeaterEv
+                0x00000188        0x4 Controls.o
+                0x00000188                _ZN8Controls11startHeaterEv
  .text._ZN8Controls7stopFanEv
-                0x0000018a        0xa Controls.o
-                0x0000018a                _ZN8Controls7stopFanEv
+                0x0000018c        0xa Controls.o
+                0x0000018c                _ZN8Controls7stopFanEv
  .text._ZN8Controls10stopHeaterEv
-                0x00000194        0x4 Controls.o
-                0x00000194                _ZN8Controls10stopHeaterEv
+                0x00000196        0x4 Controls.o
+                0x00000196                _ZN8Controls10stopHeaterEv
  .text._ZL9lcd_writeh
-                0x00000198       0xba Incubator.o
+                0x0000019a       0xba Incubator.o
  .text._Z9lcd_clearv
-                0x00000252       0x1c Incubator.o
-                0x00000252                _Z9lcd_clearv
+                0x00000254       0x1c Incubator.o
+                0x00000254                _Z9lcd_clearv
  .text._Z8lcd_putsPKc
-                0x0000026e       0x26 Incubator.o
-                0x0000026e                _Z8lcd_putsPKc
+                0x00000270       0x26 Incubator.o
+                0x00000270                _Z8lcd_putsPKc
  .text._Z9lcd_putchc
-                0x00000294        0xc Incubator.o
-                0x00000294                _Z9lcd_putchc
+                0x00000296        0xc Incubator.o
+                0x00000296                _Z9lcd_putchc
  .text._Z10lcd_gotoxyhh
-                0x000002a0       0x26 Incubator.o
-                0x000002a0                _Z10lcd_gotoxyhh
+                0x000002a2       0x26 Incubator.o
+                0x000002a2                _Z10lcd_gotoxyhh
  .text._Z8lcd_initv
-                0x000002c6       0xbe Incubator.o
-                0x000002c6                _Z8lcd_initv
+                0x000002c8       0xbe Incubator.o
+                0x000002c8                _Z8lcd_initv
  .text._Z7lcd_numii
-                0x00000384       0x30 Incubator.o
-                0x00000384                _Z7lcd_numii
+                0x00000386       0x30 Incubator.o
+                0x00000386                _Z7lcd_numii
  .text._Z6PrintfhPcz
-                0x000003b4      0x1e8 Incubator.o
-                0x000003b4                _Z6PrintfhPcz
+                0x000003b6      0x1e8 Incubator.o
+                0x000003b6                _Z6PrintfhPcz
  .text._Z11keypad_initv
-                0x0000059c       0x20 Incubator.o
-                0x0000059c                _Z11keypad_initv
+                0x0000059e       0x20 Incubator.o
+                0x0000059e                _Z11keypad_initv
  .text._Z12keypad_checkv
-                0x000005bc      0x18a Incubator.o
-                0x000005bc                _Z12keypad_checkv
+                0x000005be      0x18a Incubator.o
+                0x000005be                _Z12keypad_checkv
  .text._Z10get_statusv
-                0x00000746       0x38 Incubator.o
-                0x00000746                _Z10get_statusv
+                0x00000748       0x38 Incubator.o
+                0x00000748                _Z10get_statusv
  .text._Z7get_keyv
-                0x0000077e       0x28 Incubator.o
-                0x0000077e                _Z7get_keyv
+                0x00000780       0x28 Incubator.o
+                0x00000780                _Z7get_keyv
  .text._Z6setADCv
-                0x000007a6       0x3e Incubator.o
-                0x000007a6                _Z6setADCv
+                0x000007a8       0x3e Incubator.o
+                0x000007a8                _Z6setADCv
  .text._Z8adc_readh
-                0x000007e4       0x2c Incubator.o
-                0x000007e4                _Z8adc_readh
+                0x000007e6       0x2c Incubator.o
+                0x000007e6                _Z8adc_readh
  .text._Z7displayv
-                0x00000810      0x3c0 Incubator.o
-                0x00000810                _Z7displayv
- .text._Z3seti  0x00000bd0      0x184 Incubator.o
-                0x00000bd0                _Z3seti
+                0x00000812      0x3c0 Incubator.o
+                0x00000812                _Z7displayv
+ .text._Z3seti  0x00000bd2      0x184 Incubator.o
+                0x00000bd2                _Z3seti
  .text.__vector_47
-                0x00000d54       0x26 Incubator.o
-                0x00000d54                __vector_47
+                0x00000d56       0x26 Incubator.o
+                0x00000d56                __vector_47
+ .text.__vector_32
+                0x00000d7c       0x26 Incubator.o
+                0x00000d7c                __vector_32
  .text._Z5checkv
-                0x00000d7a      0x2fa Incubator.o
-                0x00000d7a                _Z5checkv
+                0x00000da2      0x342 Incubator.o
+                0x00000da2                _Z5checkv
  .text._Z11update_timev
-                0x00001074       0x9e Incubator.o
-                0x00001074                _Z11update_timev
- .text.main     0x00001112      0x18c Incubator.o
-                0x00001112                main
+                0x000010e4       0x9e Incubator.o
+                0x000010e4                _Z11update_timev
+ .text.main     0x00001182      0x226 Incubator.o
+                0x00001182                main
  .text._GLOBAL__sub_I__Z7lcd_cmdh
-                0x0000129e        0xa Incubator.o
+                0x000013a8        0xa Incubator.o
  .text._ZN3led8led_initEv
-                0x000012a8       0x2a led.o
-                0x000012a8                _ZN3led8led_initEv
+                0x000013b2       0x2a led.o
+                0x000013b2                _ZN3led8led_initEv
  .text._ZN3led6led_doEii
-                0x000012d2      0x130 led.o
-                0x000012d2                _ZN3led6led_doEii
+                0x000013dc      0x130 led.o
+                0x000013dc                _ZN3led6led_doEii
  .text._ZN12PhotoTherapy17init_phototherapyEi
-                0x00001402        0xa PhotoTherapy.o
-                0x00001402                _ZN12PhotoTherapy17init_phototherapyEi
+                0x0000150c        0xa PhotoTherapy.o
+                0x0000150c                _ZN12PhotoTherapy17init_phototherapyEi
  .text._ZN12PhotoTherapy18start_phototherapyEi
-                0x0000140c       0x10 PhotoTherapy.o
-                0x0000140c                _ZN12PhotoTherapy18start_phototherapyEi
+                0x00001516       0x10 PhotoTherapy.o
+                0x00001516                _ZN12PhotoTherapy18start_phototherapyEi
  .text._ZN12PhotoTherapy17change_brightnessEi
-                0x0000141c        0x4 PhotoTherapy.o
-                0x0000141c                _ZN12PhotoTherapy17change_brightnessEi
+                0x00001526        0x4 PhotoTherapy.o
+                0x00001526                _ZN12PhotoTherapy17change_brightnessEi
  .text._ZN12PhotoTherapy17stop_phototherapyEv
-                0x00001420       0x12 PhotoTherapy.o
-                0x00001420                _ZN12PhotoTherapy17stop_phototherapyEv
+                0x0000152a       0x12 PhotoTherapy.o
+                0x0000152a                _ZN12PhotoTherapy17stop_phototherapyEv
  .text._ZN3PWM8init_pwmEi
-                0x00001432       0x3c PWM.o
-                0x00001432                _ZN3PWM8init_pwmEi
+                0x0000153c       0x3c PWM.o
+                0x0000153c                _ZN3PWM8init_pwmEi
  .text._ZN3PWM7set_pwmEi
-                0x0000146e       0x56 PWM.o
-                0x0000146e                _ZN3PWM7set_pwmEi
+                0x00001578       0x56 PWM.o
+                0x00001578                _ZN3PWM7set_pwmEi
  .text._ZN3PWM9start_pwmEi
-                0x000014c4        0x4 PWM.o
-                0x000014c4                _ZN3PWM9start_pwmEi
+                0x000015ce        0x4 PWM.o
+                0x000015ce                _ZN3PWM9start_pwmEi
  .text._ZN3PWM8stop_pwmEv
-                0x000014c8        0xa PWM.o
-                0x000014c8                _ZN3PWM8stop_pwmEv
+                0x000015d2        0xa PWM.o
+                0x000015d2                _ZN3PWM8stop_pwmEv
  .text._ZN6Timerr11setTimerNumEi
-                0x000014d2        0x8 Timerr.o
-                0x000014d2                _ZN6Timerr11setTimerNumEi
+                0x000015dc        0x8 Timerr.o
+                0x000015dc                _ZN6Timerr11setTimerNumEi
  .text._ZN6Timerr9stopTimerEv
-                0x000014da       0x50 Timerr.o
-                0x000014da                _ZN6Timerr9stopTimerEv
+                0x000015e4       0x50 Timerr.o
+                0x000015e4                _ZN6Timerr9stopTimerEv
  .text._ZN6Timerr19setCompareInterruptEv
-                0x0000152a       0x50 Timerr.o
-                0x0000152a                _ZN6Timerr19setCompareInterruptEv
+                0x00001634       0x50 Timerr.o
+                0x00001634                _ZN6Timerr19setCompareInterruptEv
  .text._ZN6Timerr16startCustomTimerEi
-                0x0000157a       0x2a Timerr.o
-                0x0000157a                _ZN6Timerr16startCustomTimerEi
+                0x00001684       0x64 Timerr.o
+                0x00001684                _ZN6Timerr16startCustomTimerEi
  .text.avr-libc.fplib
-                0x000015a4        0xa c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/../../../../avr/lib/avr6\libm.a(addsf3.o)
-                0x000015a4                __subsf3
-                0x000015a6                __addsf3
+                0x000016e8        0xa c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/../../../../avr/lib/avr6\libm.a(addsf3.o)
+                0x000016e8                __subsf3
+                0x000016ea                __addsf3
  .text.avr-libc.fplib
-                0x000015ae       0xc0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/../../../../avr/lib/avr6\libm.a(addsf3x.o)
-                0x000015c8                __addsf3x
+                0x000016f2       0xc0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/../../../../avr/lib/avr6\libm.a(addsf3x.o)
+                0x0000170c                __addsf3x
  .text.avr-libc.fplib
-                0x0000166e        0x4 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/../../../../avr/lib/avr6\libm.a(divsf3.o)
-                0x0000166e                __divsf3
+                0x000017b2        0x4 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/../../../../avr/lib/avr6\libm.a(divsf3.o)
+                0x000017b2                __divsf3
  .text.avr-libc.fplib
-                0x00001672       0xcc c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/../../../../avr/lib/avr6\libm.a(divsf3x.o)
-                0x00001688                __divsf3x
-                0x0000168c                __divsf3_pse
+                0x000017b6       0xcc c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/../../../../avr/lib/avr6\libm.a(divsf3x.o)
+                0x000017cc                __divsf3x
+                0x000017d0                __divsf3_pse
  .text.avr-libc.fplib
-                0x0000173e        0xa c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/../../../../avr/lib/avr6\libm.a(fixsfsi.o)
-                0x0000173e                __fixsfsi
+                0x00001882        0xa c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/../../../../avr/lib/avr6\libm.a(fixsfsi.o)
+                0x00001882                __fixsfsi
  .text.avr-libc.fplib
-                0x00001748       0x58 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/../../../../avr/lib/avr6\libm.a(fixunssfsi.o)
-                0x00001748                __fixunssfsi
+                0x0000188c       0x58 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/../../../../avr/lib/avr6\libm.a(fixunssfsi.o)
+                0x0000188c                __fixunssfsi
  .text.avr-libc.fplib
-                0x000017a0       0x7a c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/../../../../avr/lib/avr6\libm.a(floatsisf.o)
-                0x000017a0                __floatunsisf
-                0x000017a4                __floatsisf
+                0x000018e4       0x7a c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/../../../../avr/lib/avr6\libm.a(floatsisf.o)
+                0x000018e4                __floatunsisf
+                0x000018e8                __floatsisf
  .text.avr-libc.fplib
-                0x0000181a        0xc c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/../../../../avr/lib/avr6\libm.a(fp_inf.o)
-                0x0000181a                __fp_inf
+                0x0000195e        0xc c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/../../../../avr/lib/avr6\libm.a(fp_inf.o)
+                0x0000195e                __fp_inf
  .text.avr-libc.fplib
-                0x00001826        0x6 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/../../../../avr/lib/avr6\libm.a(fp_nan.o)
-                0x00001826                __fp_nan
+                0x0000196a        0x6 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/../../../../avr/lib/avr6\libm.a(fp_nan.o)
+                0x0000196a                __fp_nan
  .text.avr-libc.fplib
-                0x0000182c        0xe c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/../../../../avr/lib/avr6\libm.a(fp_pscA.o)
-                0x0000182c                __fp_pscA
+                0x00001970        0xe c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/../../../../avr/lib/avr6\libm.a(fp_pscA.o)
+                0x00001970                __fp_pscA
  .text.avr-libc.fplib
-                0x0000183a        0xe c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/../../../../avr/lib/avr6\libm.a(fp_pscB.o)
-                0x0000183a                __fp_pscB
+                0x0000197e        0xe c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/../../../../avr/lib/avr6\libm.a(fp_pscB.o)
+                0x0000197e                __fp_pscB
  .text.avr-libc.fplib
-                0x00001848       0x22 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/../../../../avr/lib/avr6\libm.a(fp_round.o)
-                0x00001848                __fp_round
+                0x0000198c       0x22 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/../../../../avr/lib/avr6\libm.a(fp_round.o)
+                0x0000198c                __fp_round
  .text.avr-libc.fplib
-                0x0000186a       0x44 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/../../../../avr/lib/avr6\libm.a(fp_split3.o)
-                0x0000186a                __fp_split3
-                0x0000187a                __fp_splitA
+                0x000019ae       0x44 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/../../../../avr/lib/avr6\libm.a(fp_split3.o)
+                0x000019ae                __fp_split3
+                0x000019be                __fp_splitA
  .text.avr-libc.fplib
-                0x000018ae        0xe c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/../../../../avr/lib/avr6\libm.a(fp_zero.o)
-                0x000018ae                __fp_zero
-                0x000018b0                __fp_szero
+                0x000019f2        0xe c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/../../../../avr/lib/avr6\libm.a(fp_zero.o)
+                0x000019f2                __fp_zero
+                0x000019f4                __fp_szero
  .text.avr-libc.fplib
-                0x000018bc        0x4 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/../../../../avr/lib/avr6\libm.a(mulsf3.o)
-                0x000018bc                __mulsf3
+                0x00001a00        0x4 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/../../../../avr/lib/avr6\libm.a(mulsf3.o)
+                0x00001a00                __mulsf3
  .text.avr-libc.fplib
-                0x000018c0       0xc2 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/../../../../avr/lib/avr6\libm.a(mulsf3x.o)
-                0x000018d4                __mulsf3x
-                0x000018d8                __mulsf3_pse
+                0x00001a04       0xc2 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/../../../../avr/lib/avr6\libm.a(mulsf3x.o)
+                0x00001a18                __mulsf3x
+                0x00001a1c                __mulsf3_pse
  .text.libgcc.div
-                0x00001982       0x28 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/avr6\libgcc.a(_udivmodhi4.o)
-                0x00001982                __udivmodhi4
- .text.libgcc   0x000019aa        0x8 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/avr6\libgcc.a(_tablejump_elpm.o)
-                0x000019aa                __tablejump_elpm__
+                0x00001ac6       0x28 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/avr6\libgcc.a(_udivmodhi4.o)
+                0x00001ac6                __udivmodhi4
+ .text.libgcc   0x00001aee        0x8 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/avr6\libgcc.a(_tablejump_elpm.o)
+                0x00001aee                __tablejump_elpm__
  .text.avr-libc
-                0x000019b2       0x3e c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/../../../../avr/lib/avr6\libc.a(itoa.o)
-                0x000019b2                itoa
+                0x00001af6       0x3e c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/../../../../avr/lib/avr6\libc.a(itoa.o)
+                0x00001af6                itoa
  .text.avr-libc
-                0x000019f0       0x20 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/../../../../avr/lib/avr6\libc.a(strrev.o)
-                0x000019f0                strrev
-                0x00001a10                . = ALIGN (0x2)
+                0x00001b34       0x20 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/../../../../avr/lib/avr6\libc.a(strrev.o)
+                0x00001b34                strrev
+                0x00001b54                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00001a10        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/avr6\libgcc.a(_exit.o)
-                0x00001a10                _exit
-                0x00001a10                exit
+ .fini9         0x00001b54        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/avr6\libgcc.a(_exit.o)
+                0x00001b54                _exit
+                0x00001b54                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -683,11 +685,11 @@ LOAD c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00001a10        0x4 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/avr6\libgcc.a(_exit.o)
+ .fini0         0x00001b54        0x4 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/avr6\libgcc.a(_exit.o)
  *(.fini0)
-                0x00001a14                _etext = .
+                0x00001b58                _etext = .
 
-.data           0x00800200       0x9c load address 0x00001a14
+.data           0x00800200       0xa2 load address 0x00001b58
                 0x00800200                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800200        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/../../../../avr/lib/avr6/crtm2560.o
@@ -725,109 +727,121 @@ LOAD c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr
  .data          0x00800200        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/../../../../avr/lib/avr6\libc.a(itoa.o)
  .data          0x00800200        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/../../../../avr/lib/avr6\libc.a(strrev.o)
  *(.data*)
+ .data.heatOn   0x00800200        0x1 Incubator.o
+                0x00800200                heatOn
+ .data.heaterCount
+                0x00800201        0x2 Incubator.o
+                0x00800201                heaterCount
  .data.door_closed
-                0x00800200        0x1 Incubator.o
-                0x00800200                door_closed
- .data.second   0x00800201        0x2 Incubator.o
-                0x00800201                second
+                0x00800203        0x1 Incubator.o
+                0x00800203                door_closed
+ .data.minute   0x00800204        0x2 Incubator.o
+                0x00800204                minute
+ .data.second   0x00800206        0x2 Incubator.o
+                0x00800206                second
  .data.last_button
-                0x00800203        0x2 Incubator.o
-                0x00800203                last_button
+                0x00800208        0x2 Incubator.o
+                0x00800208                last_button
  *(.rodata)
  *(.rodata*)
  .rodata.str1.1
-                0x00800205       0x97 Incubator.o
+                0x0080020a       0x97 Incubator.o
                                  0xc7 (size before relaxing)
  *(.gnu.linkonce.d*)
-                0x0080029c                . = ALIGN (0x2)
-                0x0080029c                _edata = .
-                0x0080029c                PROVIDE (__data_end, .)
+                0x008002a2                . = ALIGN (0x2)
+ *fill*         0x008002a1        0x1 
+                0x008002a2                _edata = .
+                0x008002a2                PROVIDE (__data_end, .)
 
-.bss            0x0080029c       0x34
-                0x0080029c                PROVIDE (__bss_start, .)
+.bss            0x008002a2       0x35
+                0x008002a2                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
- .bss.controls  0x0080029c        0x1 Incubator.o
-                0x0080029c                controls
- .bss.leds      0x0080029d        0x1 Incubator.o
-                0x0080029d                leds
+ .bss.controls  0x008002a2        0x1 Incubator.o
+                0x008002a2                controls
+ .bss.leds      0x008002a3        0x1 Incubator.o
+                0x008002a3                leds
  .bss.phototherapy
-                0x0080029e        0x2 Incubator.o
-                0x0080029e                phototherapy
- .bss.timerr    0x008002a0        0x2 Incubator.o
-                0x008002a0                timerr
- .bss.last_key  0x008002a2        0x2 Incubator.o
-                0x008002a2                last_key
+                0x008002a4        0x2 Incubator.o
+                0x008002a4                phototherapy
+ .bss.timerHeater
+                0x008002a6        0x2 Incubator.o
+                0x008002a6                timerHeater
+ .bss.timerr    0x008002a8        0x2 Incubator.o
+                0x008002a8                timerr
+ .bss.heaterCountUpdate
+                0x008002aa        0x1 Incubator.o
+                0x008002aa                heaterCountUpdate
+ .bss.last_key  0x008002ab        0x2 Incubator.o
+                0x008002ab                last_key
  .bss.skin_temp
-                0x008002a4        0x4 Incubator.o
-                0x008002a4                skin_temp
- .bss.air_temp  0x008002a8        0x4 Incubator.o
-                0x008002a8                air_temp
- .bss.humidity  0x008002ac        0x2 Incubator.o
-                0x008002ac                humidity
+                0x008002ad        0x4 Incubator.o
+                0x008002ad                skin_temp
+ .bss.air_temp  0x008002b1        0x4 Incubator.o
+                0x008002b1                air_temp
+ .bss.humidity  0x008002b5        0x2 Incubator.o
+                0x008002b5                humidity
  .bss.restart_system
-                0x008002ae        0x1 Incubator.o
-                0x008002ae                restart_system
- .bss.system_fault
-                0x008002af        0x1 Incubator.o
-                0x008002af                system_fault
- .bss.pressed_keypad
-                0x008002b0        0x1 Incubator.o
-                0x008002b0                pressed_keypad
- .bss.keypad_enable
-                0x008002b1        0x1 Incubator.o
-                0x008002b1                keypad_enable
- .bss.second_lapsed
-                0x008002b2        0x1 Incubator.o
-                0x008002b2                second_lapsed
- .bss.pressed_restart_system
-                0x008002b3        0x1 Incubator.o
-                0x008002b3                pressed_restart_system
- .bss.pressed_incubator_stop
-                0x008002b4        0x1 Incubator.o
-                0x008002b4                pressed_incubator_stop
- .bss.pressed_incubator_start
-                0x008002b5        0x1 Incubator.o
-                0x008002b5                pressed_incubator_start
- .bss.pressed_photo_stop
-                0x008002b6        0x1 Incubator.o
-                0x008002b6                pressed_photo_stop
- .bss.pressed_photo_start
                 0x008002b7        0x1 Incubator.o
-                0x008002b7                pressed_photo_start
- .bss.photo_start
+                0x008002b7                restart_system
+ .bss.system_fault
                 0x008002b8        0x1 Incubator.o
-                0x008002b8                photo_start
- .bss.incubator_running
+                0x008002b8                system_fault
+ .bss.pressed_keypad
                 0x008002b9        0x1 Incubator.o
-                0x008002b9                incubator_running
- .bss.timer_state
+                0x008002b9                pressed_keypad
+ .bss.keypad_enable
                 0x008002ba        0x1 Incubator.o
-                0x008002ba                timer_state
- .bss.timer_set
+                0x008002ba                keypad_enable
+ .bss.second_lapsed
                 0x008002bb        0x1 Incubator.o
-                0x008002bb                timer_set
- .bss.lcd_pos   0x008002bc        0x2 Incubator.o
-                0x008002bc                lcd_pos
- .bss.count     0x008002be        0x2 Incubator.o
-                0x008002be                count
- .bss.time      0x008002c0        0xc Incubator.o
-                0x008002c0                time
- .bss.hour      0x008002cc        0x2 Incubator.o
-                0x008002cc                hour
- .bss.minute    0x008002ce        0x2 Incubator.o
-                0x008002ce                minute
+                0x008002bb                second_lapsed
+ .bss.pressed_restart_system
+                0x008002bc        0x1 Incubator.o
+                0x008002bc                pressed_restart_system
+ .bss.pressed_incubator_stop
+                0x008002bd        0x1 Incubator.o
+                0x008002bd                pressed_incubator_stop
+ .bss.pressed_incubator_start
+                0x008002be        0x1 Incubator.o
+                0x008002be                pressed_incubator_start
+ .bss.pressed_photo_stop
+                0x008002bf        0x1 Incubator.o
+                0x008002bf                pressed_photo_stop
+ .bss.pressed_photo_start
+                0x008002c0        0x1 Incubator.o
+                0x008002c0                pressed_photo_start
+ .bss.photo_start
+                0x008002c1        0x1 Incubator.o
+                0x008002c1                photo_start
+ .bss.incubator_running
+                0x008002c2        0x1 Incubator.o
+                0x008002c2                incubator_running
+ .bss.timer_state
+                0x008002c3        0x1 Incubator.o
+                0x008002c3                timer_state
+ .bss.timer_set
+                0x008002c4        0x1 Incubator.o
+                0x008002c4                timer_set
+ .bss.lcd_pos   0x008002c5        0x2 Incubator.o
+                0x008002c5                lcd_pos
+ .bss.count     0x008002c7        0x2 Incubator.o
+                0x008002c7                count
+ .bss.time      0x008002c9        0xc Incubator.o
+                0x008002c9                time
+ .bss.hour      0x008002d5        0x2 Incubator.o
+                0x008002d5                hour
  *(COMMON)
-                0x008002d0                PROVIDE (__bss_end, .)
-                0x00001a14                __data_load_start = LOADADDR (.data)
-                0x00001ab0                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x008002d7                PROVIDE (__bss_end, .)
+                0x00001b58                __data_load_start = LOADADDR (.data)
+                0x00001bfa                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x008002d0        0x0
-                0x008002d0                PROVIDE (__noinit_start, .)
+.noinit         0x008002d7        0x0
+                0x008002d7                PROVIDE (__noinit_start, .)
  *(.noinit*)
-                0x008002d0                PROVIDE (__noinit_end, .)
-                0x008002d0                _end = .
-                0x008002d0                PROVIDE (__heap_start, .)
+                0x008002d7                PROVIDE (__noinit_end, .)
+                0x008002d7                _end = .
+                0x008002d7                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
  *(.eeprom*)
@@ -930,84 +944,84 @@ LOAD c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000      0x238
+.debug_aranges  0x00000000      0x240
  *(.debug_aranges)
  .debug_aranges
                 0x00000000       0x40 Controls.o
  .debug_aranges
-                0x00000040      0x110 Incubator.o
+                0x00000040      0x118 Incubator.o
  .debug_aranges
-                0x00000150       0x28 led.o
+                0x00000158       0x28 led.o
  .debug_aranges
-                0x00000178       0x38 PhotoTherapy.o
+                0x00000180       0x38 PhotoTherapy.o
  .debug_aranges
-                0x000001b0       0x38 PWM.o
+                0x000001b8       0x38 PWM.o
  .debug_aranges
-                0x000001e8       0x50 Timerr.o
+                0x000001f0       0x50 Timerr.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x2a72
+.debug_info     0x00000000     0x2bc7
  *(.debug_info)
  .debug_info    0x00000000      0x1db Controls.o
- .debug_info    0x000001db     0x1ecc Incubator.o
- .debug_info    0x000020a7      0x12e led.o
- .debug_info    0x000021d5      0x3d7 PhotoTherapy.o
- .debug_info    0x000025ac      0x203 PWM.o
- .debug_info    0x000027af      0x2c3 Timerr.o
+ .debug_info    0x000001db     0x2007 Incubator.o
+ .debug_info    0x000021e2      0x12e led.o
+ .debug_info    0x00002310      0x3d7 PhotoTherapy.o
+ .debug_info    0x000026e7      0x203 PWM.o
+ .debug_info    0x000028ea      0x2dd Timerr.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev   0x00000000      0xa86
+.debug_abbrev   0x00000000      0xa91
  *(.debug_abbrev)
  .debug_abbrev  0x00000000       0xc6 Controls.o
  .debug_abbrev  0x000000c6      0x51b Incubator.o
  .debug_abbrev  0x000005e1       0xcf led.o
  .debug_abbrev  0x000006b0      0x199 PhotoTherapy.o
  .debug_abbrev  0x00000849      0x129 PWM.o
- .debug_abbrev  0x00000972      0x114 Timerr.o
+ .debug_abbrev  0x00000972      0x11f Timerr.o
 
-.debug_line     0x00000000     0x1883
+.debug_line     0x00000000     0x197e
  *(.debug_line)
  .debug_line    0x00000000       0xc3 Controls.o
- .debug_line    0x000000c3     0x1165 Incubator.o
- .debug_line    0x00001228      0x20c led.o
- .debug_line    0x00001434      0x210 PhotoTherapy.o
- .debug_line    0x00001644       0xb5 PWM.o
- .debug_line    0x000016f9      0x18a Timerr.o
+ .debug_line    0x000000c3     0x1230 Incubator.o
+ .debug_line    0x000012f3      0x20c led.o
+ .debug_line    0x000014ff      0x210 PhotoTherapy.o
+ .debug_line    0x0000170f       0xb5 PWM.o
+ .debug_line    0x000017c4      0x1ba Timerr.o
 
-.debug_frame    0x00000000      0x6d0
+.debug_frame    0x00000000      0x6f0
  *(.debug_frame)
  .debug_frame   0x00000000       0x64 Controls.o
- .debug_frame   0x00000064      0x4ec Incubator.o
- .debug_frame   0x00000550       0x34 led.o
- .debug_frame   0x00000584       0x54 PhotoTherapy.o
- .debug_frame   0x000005d8       0x74 PWM.o
- .debug_frame   0x0000064c       0x84 Timerr.o
+ .debug_frame   0x00000064      0x50c Incubator.o
+ .debug_frame   0x00000570       0x34 led.o
+ .debug_frame   0x000005a4       0x54 PhotoTherapy.o
+ .debug_frame   0x000005f8       0x74 PWM.o
+ .debug_frame   0x0000066c       0x84 Timerr.o
 
-.debug_str      0x00000000      0xae1
+.debug_str      0x00000000      0xb1e
  *(.debug_str)
  .debug_str     0x00000000      0x152 Controls.o
                                 0x18f (size before relaxing)
- .debug_str     0x00000152      0x91e Incubator.o
-                                0xb04 (size before relaxing)
- .debug_str     0x00000a70       0x15 led.o
+ .debug_str     0x00000152      0x95b Incubator.o
+                                0xb41 (size before relaxing)
+ .debug_str     0x00000aad       0x15 led.o
                                 0x10c (size before relaxing)
- .debug_str     0x00000a85       0x2b PhotoTherapy.o
+ .debug_str     0x00000ac2       0x2b PhotoTherapy.o
                                 0x2ae (size before relaxing)
- .debug_str     0x00000ab0        0xd PWM.o
+ .debug_str     0x00000aed        0xd PWM.o
                                 0x14e (size before relaxing)
- .debug_str     0x00000abd       0x24 Timerr.o
+ .debug_str     0x00000afa       0x24 Timerr.o
                                 0x21b (size before relaxing)
 
-.debug_loc      0x00000000     0x2228
+.debug_loc      0x00000000     0x231b
  *(.debug_loc)
  .debug_loc     0x00000000       0x72 Controls.o
- .debug_loc     0x00000072     0x1be0 Incubator.o
- .debug_loc     0x00001c52       0xf2 led.o
- .debug_loc     0x00001d44      0x10a PhotoTherapy.o
- .debug_loc     0x00001e4e      0x10b PWM.o
- .debug_loc     0x00001f59      0x2cf Timerr.o
+ .debug_loc     0x00000072     0x1c1c Incubator.o
+ .debug_loc     0x00001c8e       0xf2 led.o
+ .debug_loc     0x00001d80      0x10a PhotoTherapy.o
+ .debug_loc     0x00001e8a      0x10b PWM.o
+ .debug_loc     0x00001f95      0x386 Timerr.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -1015,14 +1029,14 @@ LOAD c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000      0x208
+.debug_ranges   0x00000000      0x210
  *(.debug_ranges)
  .debug_ranges  0x00000000       0x30 Controls.o
- .debug_ranges  0x00000030      0x130 Incubator.o
- .debug_ranges  0x00000160       0x18 led.o
- .debug_ranges  0x00000178       0x28 PhotoTherapy.o
- .debug_ranges  0x000001a0       0x28 PWM.o
- .debug_ranges  0x000001c8       0x40 Timerr.o
+ .debug_ranges  0x00000030      0x138 Incubator.o
+ .debug_ranges  0x00000168       0x18 led.o
+ .debug_ranges  0x00000180       0x28 PhotoTherapy.o
+ .debug_ranges  0x000001a8       0x28 PWM.o
+ .debug_ranges  0x000001d0       0x40 Timerr.o
 
 .debug_macro
  *(.debug_macro)
