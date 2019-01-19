@@ -94,7 +94,7 @@
 #define POT 0
 #define LM35_1 1
 #define LM35_2 3
-#define HUMIDITY 2
+#define HUMIDITY 4
 
 #define DDR(x) (*(&x - 1))      /* address of data direction register of port x */
 

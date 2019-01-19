@@ -31,6 +31,11 @@ void check();
 void update_time();
 float calculateHeaterOffTime(float airTemp);
 
+void Request();
+void Response();
+uint8_t Receive_data();		
+void readTempHumid(float &temper, float &humid);
+
 volatile int second = 30;
 volatile int minute = 3;
 volatile int hour = 0;
@@ -63,7 +68,8 @@ bool pressed_keypad = false;
 
 bool system_fault = false;
 bool restart_system = false;
-uint16_t humidity=0;
+float humidity=0;
+float temperature = 0;
 float air_temp = 0.0, skin_temp = 0.0;
 int last_key = 0;
 
@@ -79,11 +85,17 @@ volatile int heaterCount = heaterOnTime;
 volatile bool heatOn = true;
 volatile bool heaterCountUpdate = false; 
 
+#define DHT11_PIN PINF4
+
+uint8_t c=0,I_RH,D_RH,I_Temp,D_Temp,CheckSum;
+
 Timerr timerr;
 Timerr timerHeater;
 PhotoTherapy phototherapy;
 led leds;
 Controls controls;
+
+Timerr tempTimer;
 int main(void)
 {
 	sei();
@@ -107,11 +119,14 @@ int main(void)
 	
 	
 	Printf(1,"TA:%fC   TS:%fC",air_temp,skin_temp);
-	Printf(2,"RH:%d%",humidity);
+	Printf(2,"RH:%f%",humidity);
 	Printf(3,"00:00:00");
-
     while(1)
     {
+		if(second_lapsed) {
+			readTempHumid(temperature, humidity);
+			Printf(2, "T:%fC RH:%f%",temperature, humidity);
+		}
 		check();
 		
 		/*For Led */
@@ -129,6 +144,7 @@ int main(void)
 		
 		humidity = adc_read(HUMIDITY);
 		*/
+		
 		
 		if(incubator_running) {
 			update_time();
@@ -196,6 +212,7 @@ void init_devices() {
 	timerr.setTimerNum(5);
 	timerr.setCompareInterrupt();
 	
+	//tempTimer.setTimerNum(5);
 	timerHeater.setTimerNum(3);
 	timerHeater.setCompareInterrupt();
 }
@@ -206,8 +223,10 @@ void display(){
 	Printf(5,"%fC",air_temp);
 	lcd_gotoxy(13,0);
 	Printf(5,"%fC",skin_temp);
-	lcd_gotoxy(3,1);
-	Printf(5,"%d%",humidity);
+	//lcd_gotoxy(3,1);
+	//Printf(5,"%f%",humidity);
+	//lcd_gotoxy(10,1);
+	//Printf(5, "T:%f", temperature);
 	if(hour == 0 && minute == 0 && second == 0) {
 		Printf(3,"00:00:00");
 	} else if(hour < 10 && minute < 10 && second < 10) {
@@ -507,4 +526,89 @@ float calculateHeaterOffTime (float airTemp) {
 	}
 	return heaterOffTimePID;
 	
+}
+
+void Request()				/* Microcontroller send start pulse/request */
+{
+	DDRF |= (1<<DHT11_PIN);
+	PORTF &= ~(1<<DHT11_PIN);	/* set to low pin */
+	_delay_ms(5);			/* wait for 20ms */
+	PORTF |= (1<<DHT11_PIN);	/* set to high pin */
+}
+
+void Response()				/* receive response from DHT11 */
+{
+	int count = 0;
+	DDRF &= ~(1<<DHT11_PIN);
+	while(PINF & (1<<DHT11_PIN)){
+		count++;
+		_delay_us(1);
+		if(count> 85)
+		break;
+	}
+	count = 0;
+	while((PINF & (1<<DHT11_PIN))==0) {
+		count++;
+		_delay_us(1);
+		if(count> 85)
+		break;
+	}
+	count = 0;
+	while(PINF & (1<<DHT11_PIN)) {
+		count++;
+		_delay_us(1);
+		if(count> 85)
+		break;
+	}
+}
+
+uint8_t Receive_data()			/* receive data */
+{
+	for (int q=0; q<8; q++)
+	{
+		int count = 0;
+		while((PINF & (1<<DHT11_PIN)) == 0)  /* check received bit 0 or 1 */
+		{
+			count++;
+			_delay_us(1);
+			if(count > 55)
+			return 0;
+		}
+		_delay_us(30);
+		if(PINF & (1<<DHT11_PIN))/* if high pulse is greater than 30us */
+		c = (c<<1)|(0x01);	/* then its logic HIGH */
+		else			/* otherwise its logic LOW */
+		c = (c<<1);
+		count = 0;
+		while(PINF & (1<<DHT11_PIN)){
+			count++;
+			_delay_us(1);
+			if(count > 45)
+			return 0;
+		}
+	}
+	return c;
+}
+
+void readTempHumid(float &temper, float &humid) {
+	Request();		/* send start pulse */
+	Response();		/* receive response */
+	I_RH=Receive_data();	/* store first eight bit in I_RH */
+	D_RH=Receive_data();	/* store next eight bit in D_RH */
+	I_Temp=Receive_data();	/* store next eight bit in I_Temp */
+	D_Temp=Receive_data();	/* store next eight bit in D_Temp */
+	CheckSum=Receive_data();/* store next eight bit in CheckSum */
+	
+	uint16_t temp16 = 0;
+	uint16_t humidity16 = 0;
+	_8bitTo16bit(temp16, I_Temp, D_Temp);
+	_8bitTo16bit(humidity16, I_RH, D_RH);
+	if ((I_RH + D_RH + I_Temp + D_Temp) != CheckSum)
+	{
+		Printf(4, "Not okay");
+		} else {
+		//Printf(4, "Yes Okay");
+	}
+	temper = temp16 / 10.0;
+	humid = humidity16 / 10.0; 
 }
