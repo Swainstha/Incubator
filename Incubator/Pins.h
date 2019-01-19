@@ -91,6 +91,7 @@
 #define KEYPAD_BUTTON_PORT PINK
 #define KEYPAD_BUTTON_PIN 4
 
+#define POT 0
 #define LM35_1 1
 #define LM35_2 3
 #define HUMIDITY 2

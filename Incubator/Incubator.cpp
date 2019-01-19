@@ -29,6 +29,7 @@ void display();
 void set(int key);
 void check();
 void update_time();
+float calculateHeaterOffTime(float airTemp);
 
 volatile int second = 30;
 volatile int minute = 3;
@@ -66,7 +67,15 @@ uint16_t humidity=0;
 float air_temp = 0.0, skin_temp = 0.0;
 int last_key = 0;
 
-volatile int heaterCount = 60;
+int const heaterOnTime = 60;
+int const heaterOffTime = 0;
+
+int const heaterOffTimeMin = 2;
+int const heaterOffTimeMax = 10; 
+
+int optimumTemp = 37;
+
+volatile int heaterCount = heaterOnTime;
 volatile bool heatOn = true;
 volatile bool heaterCountUpdate = false; 
 
@@ -78,12 +87,8 @@ Controls controls;
 int main(void)
 {
 	sei();
-	//init_devices();
-	setADC();
-	keypad_init();
-	lcd_init();
-	lcd_clear();
-	leds.led_init();
+	init_devices();
+	
 	
 	/*leds.led_do(TS_HIGH_LED, ON);
 	leds.led_do(TS_LOW_LED, ON);
@@ -99,16 +104,7 @@ int main(void)
 	leds.led_do(HEATER_ON_LED, ON);
 	*/
 	
-	phototherapy.init_phototherapy(4000);
 	
-	
-	controls.initControls();
-	
-	timerr.setTimerNum(5);
-	timerr.setCompareInterrupt();
-	
-	timerHeater.setTimerNum(3);
-	timerHeater.setCompareInterrupt();
 	
 	Printf(1,"TA:%fC   TS:%fC",air_temp,skin_temp);
 	Printf(2,"RH:%d%",humidity);
@@ -119,15 +115,16 @@ int main(void)
 		check();
 		
 		/*For Led */
-		int adc = adc_read(LM35_1);
-		air_temp = ((adc / 1024.0)) * 100;
+		int adc = adc_read(POT);
+		int adc2 = adc_read(LM35_1);
+		air_temp = ((adc2 / 1024.0) * 5) * 100;
 		if(incubator_running || photo_start) {
 			int dutycycle = (adc/1024.0) * 100;
 			phototherapy.change_brightness(dutycycle);
 		}
 		//air_temp = adc_read(LM35_1);
-		int adc1 = adc_read(HUMIDITY);
-		skin_temp = ((adc1 / 1024.0)) * 100;
+		int adc1 = adc_read(LM35_2);
+		skin_temp = ((adc1 / 1024.0)*5) * 100; //10mv per degree celsius
 		/*_delay_ms(20);
 		
 		humidity = adc_read(HUMIDITY);
@@ -138,14 +135,18 @@ int main(void)
 			if(heaterCountUpdate) {
 				heaterCountUpdate = false;
 				heaterCount--;
-				if(heaterCount == 0 && heatOn) {
-					heaterCount = 30;
+				if(heaterCount <= 0 && heatOn) {
+					heaterCount = calculateHeaterOffTime(air_temp);
+					//lcd_gotoxy(12,3);
+					Printf(4, "Off time: %d", heaterCount);
 					heatOn = false;
 					controls.stopHeater();
-				} else if(heaterCount == 0 && !heatOn) {
-					heaterCount = 60;
+					leds.led_do(HEATER_ON_LED, OFF);
+				} else if(heaterCount <= 0 && !heatOn) {
+					heaterCount = heaterOnTime;
 					heatOn = true;
 					controls.startHeater();
+					leds.led_do(HEATER_ON_LED, ON);
 				}
 			}
 		} 
@@ -182,14 +183,21 @@ int main(void)
 
 void init_devices() {
 	
-	//DDRH = 0xff;
-	//DDRA = 0x00;
-	//INIT_DOOR;
-	//INIT_INCUBATOR;
-	//INIT_PHOTO;
-	//INIT_FAN_HEATER;
-	//DDRF|=(1<<PF7);
-	//PORTF |= (1<<PF7);
+	setADC();
+	keypad_init();
+	lcd_init();
+	lcd_clear();
+	leds.led_init();
+	
+	phototherapy.init_phototherapy(4000);
+	
+	controls.initControls();
+	
+	timerr.setTimerNum(5);
+	timerr.setCompareInterrupt();
+	
+	timerHeater.setTimerNum(3);
+	timerHeater.setCompareInterrupt();
 }
 
 
@@ -320,15 +328,17 @@ void check() {
 	}*/
 	
 	if(bit_is_clear(KEYPAD_BUTTON_PORT, KEYPAD_BUTTON_PIN) && !pressed_keypad) {
-		pressed_keypad = true;
+		
 		//lcd_clear();
-		Printf(4, "KEYPAD ENABLED");
+		
 		keypad_enable = !keypad_enable;
+		Printf(4, "Keypad %b", keypad_enable);
 		if(keypad_enable) {
 			leds.led_do(KEYPAD_ENABLE_LED, ON);
 		} else {
 			leds.led_do(KEYPAD_ENABLE_LED, OFF);
 		}
+		pressed_keypad = true;
 	} else {
 		pressed_keypad = false;
 	}
@@ -366,7 +376,7 @@ void check() {
 			controls.startFan();
 			controls.startHeater();
 			
-			heaterCount = 60;
+			heaterCount = heaterOnTime;
 			heatOn = true;
 			timerHeater.startCustomTimer(1000);
 			
@@ -393,7 +403,7 @@ void check() {
 		leds.led_do(HEATER_ON_LED, OFF);
 		leds.led_do(FAN_ON_LED, OFF);
 		
-		heaterCount = 60;
+		heaterCount = heaterOnTime;
 		heatOn = true;
 		timerHeater.stopTimer();
 		
@@ -417,7 +427,7 @@ void check() {
 		controls.stopFan();
 		controls.stopHeater();
 		
-		heaterCount = 60;
+		heaterCount = heaterOnTime;
 		heatOn = true;
 		timerHeater.stopTimer();
 		
@@ -457,7 +467,7 @@ void check() {
 			
 			controls.startFan();
 			controls.startHeater();
-			heaterCount = 60;
+			heaterCount = heaterOnTime;
 			heatOn = true;
 			timerHeater.startCustomTimer(1000);
 		}
@@ -485,4 +495,16 @@ void update_time() {
 			}
 		}
 	}
+}
+
+float calculateHeaterOffTime (float airTemp) {
+	float kp = 0.5;
+	float heaterOffTimePID = heaterOffTimeMax - ((optimumTemp - airTemp) * kp);
+	if(heaterOffTimePID > heaterOffTimeMax) {
+		heaterOffTimePID = heaterOffTimeMax;
+	} else if( heaterOffTimePID < heaterOffTimeMin) {
+		heaterOffTimePID = heaterOffTimeMin;
+	}
+	return heaterOffTimePID;
+	
 }

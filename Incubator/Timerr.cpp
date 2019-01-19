@@ -96,11 +96,11 @@ void Timerr::startCustomTimer(int milli_sec) {
 	if(this->timer_no == 5) {
 		int ocr = (15.625 * milli_sec);
 		OCR5A = ocr;
-		START_TIMERR(5,0,1); //for proteus use 5,0,1 and for real life use 5,0,2
+		START_TIMERR(5,0,2); //for proteus use 5,0,1 and for real life use 5,0,2
 	} else if(this->timer_no == 3) {
 		int ocr = (15.625 * milli_sec);
 		OCR3A = ocr;
-		START_TIMERR(3,0,1); //for proteus use 3,0,1 and for real life use 3,0,2
+		START_TIMERR(3,0,2); //for proteus use 3,0,1 and for real life use 3,0,2
 	}
 }
 	
