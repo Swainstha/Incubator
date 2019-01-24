@@ -125,21 +125,28 @@ int main(void)
     {
 		if(second_lapsed) {
 			readTempHumid(temperature, humidity);
+			
+			int adc2 = adc_read(LM35_1);
+			air_temp = ((adc2 / 1024.0) * 5) * 100;
+			
+			int adc1 = adc_read(LM35_2);
+			skin_temp = ((adc1 / 1024.0)*5) * 100; //10mv per degree celsius
+			display();
 			Printf(2, "T:%fC RH:%f%",temperature, humidity);
+			
 		}
 		check();
 		
 		/*For Led */
 		int adc = adc_read(POT);
-		int adc2 = adc_read(LM35_1);
-		air_temp = ((adc2 / 1024.0) * 5) * 100;
+		
 		if(incubator_running || photo_start) {
 			int dutycycle = (adc/1024.0) * 100;
 			phototherapy.change_brightness(dutycycle);
+			
 		}
 		//air_temp = adc_read(LM35_1);
-		int adc1 = adc_read(LM35_2);
-		skin_temp = ((adc1 / 1024.0)*5) * 100; //10mv per degree celsius
+		
 		/*_delay_ms(20);
 		
 		humidity = adc_read(HUMIDITY);
@@ -166,7 +173,7 @@ int main(void)
 				}
 			}
 		} 
-		display();
+		//display();
 		if(keypad_enable) {
 			int key = get_key();
 			if(key != last_key) {
@@ -294,30 +301,48 @@ ISR(TIMER3_COMPA_vect) {
 
 void check() {
 	
-	if(air_temp > MAX) {
+	if(temperature > 37) {
+		leds.led_do(TA_LOW_LED,OFF);
+		leds.led_do(TA_HIGH_LED,ON);
 		//REGISTER_SET1(LEDP,LED0);
-		} else if(air_temp < MIN) {
+		} else if(temperature < 33) {
+			leds.led_do(TA_HIGH_LED,OFF);
+			leds.led_do(TA_LOW_LED, ON);
 		//REGISTER_SET1(LEDP,LED1);
 		} else {
+			leds.led_do(TA_HIGH_LED,OFF);
+			leds.led_do(TA_LOW_LED, OFF);
 		//REGISTER_RESET(LEDP, LED0);
 		//REGISTER_RESET(LEDP, LED1);
 	}
 	
-	if(skin_temp > MAX) {
+	if(skin_temp > 37) {
+		leds.led_do(TS_LOW_LED,OFF);
+		leds.led_do(TS_HIGH_LED,ON);
 		//REGISTER_SET1(LEDP,LED2);
 		} else if(skin_temp <MIN) {
+			leds.led_do(TS_HIGH_LED,OFF);
+			leds.led_do(TS_LOW_LED, ON);
 		//REGISTER_SET1(LEDP,LED3);
 		} else {
+			leds.led_do(TS_HIGH_LED,OFF);
+			leds.led_do(TS_LOW_LED, OFF);
 		//REGISTER_RESET(LEDP, LED2);
 		//REGISTER_RESET(LEDP, LED3);
 	}
 	
 	
-	if(humidity >MAX) {
+	if(humidity >60) {
+		leds.led_do(RH_HIGH_LED,OFF);
+		leds.led_do(RH_LOW_LED, ON);
 		//REGISTER_SET1(LEDP,LED4);
-		} else if(humidity < MIN) {
+		} else if(humidity < 40) {
+			leds.led_do(RH_LOW_LED,OFF);
+			leds.led_do(RH_HIGH_LED, ON);
 		//REGISTER_SET1(LEDP, LED5);
 		} else {
+			leds.led_do(RH_HIGH_LED,OFF);
+			leds.led_do(RH_LOW_LED, OFF);
 		//REGISTER_RESET(LEDP, LED4);
 		//REGISTER_RESET(LEDP, LED5);
 	}
