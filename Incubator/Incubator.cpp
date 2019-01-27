@@ -73,13 +73,13 @@ float temperature = 0;
 float air_temp = 0.0, skin_temp = 0.0;
 int last_key = 0;
 
-int const heaterOnTime = 60;
-int const heaterOffTime = 0;
+int heaterOnTime = 60;
+int heaterOffTime = 0;
 
 int const heaterOffTimeMin = 2;
-int const heaterOffTimeMax = 10; 
+int const heaterOffTimeMax = 12; 
 
-int optimumTemp = 37;
+int optimumTemp = 35;
 
 volatile int heaterCount = heaterOnTime;
 volatile bool heatOn = true;
@@ -131,10 +131,14 @@ int main(void)
 			
 			int adc1 = adc_read(LM35_2);
 			skin_temp = ((adc1 / 1024.0)*5) * 100; //10mv per degree celsius
-			display();
 			Printf(2, "T:%fC RH:%f%",temperature, humidity);
 			
+			lcd_gotoxy(3,0);
+			Printf(5,"%fC",air_temp);
+			lcd_gotoxy(13,0);
+			Printf(5,"%fC",skin_temp);
 		}
+		display();
 		check();
 		
 		/*For Led */
@@ -158,8 +162,15 @@ int main(void)
 			if(heaterCountUpdate) {
 				heaterCountUpdate = false;
 				heaterCount--;
+				if(temperature > 34) {
+					heaterOnTime = 10;
+				} else if(temperature <30) {
+					heaterOnTime = 60;
+				} else {
+					heaterOnTime = 20;
+				}
 				if(heaterCount <= 0 && heatOn) {
-					heaterCount = calculateHeaterOffTime(air_temp);
+					heaterCount = calculateHeaterOffTime(temperature);
 					//lcd_gotoxy(12,3);
 					Printf(4, "Off time: %d", heaterCount);
 					heatOn = false;
@@ -226,10 +237,10 @@ void init_devices() {
 
 
 void display(){
-	lcd_gotoxy(3,0);
-	Printf(5,"%fC",air_temp);
-	lcd_gotoxy(13,0);
-	Printf(5,"%fC",skin_temp);
+	//lcd_gotoxy(3,0);
+	//Printf(5,"%fC",air_temp);
+	//lcd_gotoxy(13,0);
+	//Printf(5,"%fC",skin_temp);
 	//lcd_gotoxy(3,1);
 	//Printf(5,"%f%",humidity);
 	//lcd_gotoxy(10,1);
@@ -301,11 +312,11 @@ ISR(TIMER3_COMPA_vect) {
 
 void check() {
 	
-	if(temperature > 37) {
+	if(temperature > 35) {
 		leds.led_do(TA_LOW_LED,OFF);
 		leds.led_do(TA_HIGH_LED,ON);
 		//REGISTER_SET1(LEDP,LED0);
-		} else if(temperature < 33) {
+		} else if(temperature < 31) {
 			leds.led_do(TA_HIGH_LED,OFF);
 			leds.led_do(TA_LOW_LED, ON);
 		//REGISTER_SET1(LEDP,LED1);
@@ -316,11 +327,11 @@ void check() {
 		//REGISTER_RESET(LEDP, LED1);
 	}
 	
-	if(skin_temp > 37) {
+	if(skin_temp > 35) {
 		leds.led_do(TS_LOW_LED,OFF);
 		leds.led_do(TS_HIGH_LED,ON);
 		//REGISTER_SET1(LEDP,LED2);
-		} else if(skin_temp <MIN) {
+		} else if(skin_temp < 31) {
 			leds.led_do(TS_HIGH_LED,OFF);
 			leds.led_do(TS_LOW_LED, ON);
 		//REGISTER_SET1(LEDP,LED3);
@@ -333,12 +344,12 @@ void check() {
 	
 	
 	if(humidity >60) {
-		leds.led_do(RH_HIGH_LED,OFF);
-		leds.led_do(RH_LOW_LED, ON);
+		leds.led_do(RH_LOW_LED,OFF);
+		leds.led_do(RH_HIGH_LED, ON);
 		//REGISTER_SET1(LEDP,LED4);
-		} else if(humidity < 40) {
-			leds.led_do(RH_LOW_LED,OFF);
-			leds.led_do(RH_HIGH_LED, ON);
+		} else if(humidity < 35) {
+			leds.led_do(RH_LOW_LED,ON);
+			leds.led_do(RH_HIGH_LED, OFF);
 		//REGISTER_SET1(LEDP, LED5);
 		} else {
 			leds.led_do(RH_HIGH_LED,OFF);
